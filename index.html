@@ -12,16 +12,6 @@
 
 <link rel="icon" href="images/21.jpg" type="image/jpeg">
 <link rel="stylesheet" href="style.css">
-
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WJLWDFKV1Y"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-WJLWDFKV1Y');
-</script>
 </head>
 <body>
     <section class="header">
@@ -34,10 +24,10 @@
              <nav>
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                     <li><a href="#">Industries</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                     <li><a href="#industries">Industries</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
                   <i class="fa fa-bars open"  onclick="hidemenu()"></i>
                   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
@@ -681,7 +671,7 @@
         
     </div>
 
-    <div class="message">
+    <div class="message"id="contact">
         <h2>Let's build something Amazing</h2>
         <p>Ready to transform your business with technology? get in touch and let us discuss your projects requirements</p>
         <div class="grid">
@@ -698,26 +688,26 @@
 
 
             <div class="msg">
-            <form action="">
+            <form action="form.php" method="post">
                 <h3>Send Us a Message</h3>
                 <p>Tell us about your project</p>
                 <div class="grid">
                     <div class="form-group">
-                        <label for="fname">First Names</label><input type="text" required placeholder="Sylvester">
+                        <label for="fname">First Name</label><input type="text" name="fname" required placeholder="Sylvester">
                     </div>   
                     <div class="form-group">
-                        <label for="lname">Last Names</label><input type="text" required placeholder="Marlick">
+                        <label for="lname">Last Name</label><input type="text" name="lname" required placeholder="Marlick">
                     </div> 
                 </div>
                 <div class="form-group">
-                <label for="email">Email Address</label><input type="email" required placeholder="Fake123@gmail.com">
+                <label for="email">Email Address</label><input type="email" name="email" required placeholder="Fake123@gmail.com">
                </div>
                <div class="grid">
                     <div class="form-group">
-                        <label for="tel">Phone NUmber</label><input type="tel" required placeholder="254176543423">
+                        <label for="tel">Phone NUmber</label><input type="tel" name="tel" required placeholder="254176543423">
                     </div>
                     <div class="form-group">
-                        <label for="tel">Phone Server</label>
+                        <label for="server">Phone Server</label>
                         <select name="server" id="server">
                             <option value="saf">Safaricom</option>
                             <option value="itel">Itel</option>
@@ -726,24 +716,24 @@
                     </div>
                </div>
                 <div class="form-group">
-                <label for="natiomality">Nationality</label><input type="text" required placeholder="Kenyan">
+                <label for="nationality">Nationality</label><input type="text" name="nationality" required placeholder="Kenyan">
                </div>
                <div class="grid">
                     <div class="form-group">
-                        <label for="text">Address</label><input type="text" required placeholder="50100">
+                        <label for="address">Address</label><input type="text" name="address" required placeholder="50100">
                     </div>
                      <div class="form-group">
-                     <label for="text">County</label><input type="text" required placeholder="Kakamega">
+                     <label for="county">County</label><input type="text" name="county" required placeholder="Kakamega">
                      </div>
                </div>
                
                <h3>Company/Organization</h3>
                 <div class="form-group">
-                <label for="company">Your company name</label><input type="text" required placeholder="Safaricom">
+                <label for="company">Your company name</label><input type="text" name="company" required placeholder="Safaricom">
                 <h3>Project Description</h3>
-                <textarea name="desc" id="desc">Tell us about your projects requirements, timeline and any...</textarea>
+                <textarea name="desc" id="desc" required placeholder="Tell us about your project requirements, timeline and any specific needs..."></textarea>
                </div>
-               <div class="btn-submit"><a href="">Submit Form</a></div>
+               <div class="btn-submit"><a href="form.php" target="_blank">Submit Form</a></div>
             </form>
         </div>
         </div>
@@ -781,7 +771,7 @@
         </div>
     </section>
 <a 
-  href="https://wa.me/254123806178?text=Hello%20I%20would%20like%20to%20make%20an%20inquiry."
+  href="https://wa.me/254180236178?text=Hello%20I%20would%20like%20to%20make%20an%20inquiry."
   target="_blank"
   class="whatsapp-btn"
 >
