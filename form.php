@@ -1,35 +1,42 @@
 <?php
-$fname = $_POST['fname'] ;
-$lname = $_POST['lname'] ;
-$email = $_POST['email'] ;
-$tel = $_POST['tel'] ;
-$nationality = $_POST['nationality'] ;
-$address = $_POST['address'] ;
-$county = $_POST['county'] ;
-$company = $_POST['company'] ;
-$desc = $_POST['desc'] ;
+require __DIR__ . '/inquiry-mailer.php';
 
-$email_from = "info@vester-two.com";
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: index.html');
+    exit;
+}
 
-$email_subject = "New website contact form submission";
+$required = ['fname', 'lname', 'email', 'tel', 'nationality', 'address', 'county', 'company', 'desc'];
+foreach ($required as $field) {
+    if (!isset($_POST[$field]) || trim($_POST[$field]) === '') {
+        header('Location: index.html?status=error');
+        exit;
+    }
+}
 
-$email_body = "You have received a new message from the website contact form.\n\n".
-              "First Name: $fname\n".
-              "Last Name: $lname\n".
-              "Email Address: $email\n".
-              "Phone Number: $tel\n".
-              "Nationality: $nationality\n".
-              "Address: $address\n".
-              "County: $county\n".
-              "Company: $company\n".
-              "Project Description: $desc\n";
+$data = [
+    'fname' => trim($_POST['fname']),
+    'lname' => trim($_POST['lname']),
+    'email' => trim($_POST['email']),
+    'tel' => trim($_POST['tel']),
+    'nationality' => trim($_POST['nationality']),
+    'address' => trim($_POST['address']),
+    'county' => trim($_POST['county']),
+    'company' => trim($_POST['company']),
+    'desc' => trim($_POST['desc']),
+    'server' => trim($_POST['server'] ?? 'Not provided'),
+];
 
-    $to = 'sylvestermakotsi@gmail.com';
-    $headers = "From: $email_from \r\n";
-    $headers .= "Reply-To: $email \r\n";
+if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+    header('Location: index.html?status=error');
+    exit;
+}
 
-    mail($to, $email_subject, $email_body, $headers);
-    header("Location: index.html");
+if (sendInquiryEmail($data)) {
+    header('Location: index.html?status=success');
+} else {
+    header('Location: index.html?status=error');
+}
 
-
+exit;
 ?>
